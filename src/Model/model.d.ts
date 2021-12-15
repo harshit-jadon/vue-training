@@ -46,13 +46,14 @@ export interface UserData {
   body: string;
 }
 
-export interface QuestionSet {
-  questionId: number;
-  questionTitle: string;
-  responseSet: string[];
+export interface QuestionSet{
+  questionId : number,
+  questionTitle : string,
+  responseSet : string[],
   isShow : boolean
 }
 
 export interface ResponseSet {
   responseSet: string[];
 }
+

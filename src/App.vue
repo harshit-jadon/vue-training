@@ -7,9 +7,8 @@
     <div id="nav">
       <router-link to="/home">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <button @click="changeRoute('mcq')">MCQ</button>
-      <!-- <router-link to="/mcq">MCQ</router-link>
-      <router-link to="/mcq">MCQ</router-link> -->
+      <!-- <button @click="changeRoute('mcq')">MCQ</button> -->
+      <router-link to="/mcq">MCQ</router-link>
     </div>
     <router-view/>
   </div>

@@ -1,97 +1,61 @@
 import { Vue, Component, Watch } from 'vue-property-decorator'
-import {mcqData} from './mcqData';
+import { MCQData } from './mcqData'
+import { QuestionSet } from '../../Model/model'
+@Component
 
-import {QuestionSet} from '../../Model/model'
+export class MCQComponent extends Vue{
 
-import QuestionResponse from './questionResponse/questionResponse.vue'
-import QuestionFooter from './qustionFooter/questionFooter.vue'
-
-interface selectedResponse {
-    questionIndex:number, 
-    responseIndex : number
-}
-
-
-@Component({
-    components: {
-        'qustion-response': QuestionResponse,
-        'qustion-footer': QuestionFooter,
-    }
-})
-export class MCQComponent extends Vue {
-
-    @Watch('message')
-    messageFunc(val:string){
-        console.log("message >> ", val)
+    @Watch('title')
+    watchFnc(wat:string){
+        console.log('watch --> '+wat)
     }
 
-    
-    public message : string = "MCQ Component"
-    
-    public data : Array<QuestionSet> = mcqData;
+    public title:string = 'Title :- MCQ TEST';
+    public questionData:QuestionSet[] = MCQData;
     public selectAnswers : string[] = ['','','','','','','','','','']
-
-    changeMessage() : void{
-        this.message = "Dynamic Message"
+    
+    changeMessage():void{
+       this.title = 'Welcome to MCQ Component'
     }
-
-    selectQuestion(event : selectedResponse){
-        let response : string = this.data[event.questionIndex].responseSet[event.responseIndex];
-        this.selectAnswers[event.questionIndex] = response
+    ShortHandWay():void{
+        this.title = "Ready for TEST"
     }
-
-    nextQuestion(index : number) : void{
-        if(index < (this.data.length-1)){
-            this.data[index].isShow = false
-            this.data[index+1].isShow = true
-        }
-    }
-
     previousQuestion(index : number) : void{
-        if(index >= 0){
-            this.data[index].isShow = false
-            this.data[index-1].isShow = true
+        if(index > 0){
+            this.questionData[index].isShow = false
+            this.questionData[index-1].isShow = true
         }
     }
-
-    anyPreviousIndex(event : number){
-        this.previousQuestion(event)
+    nextQuestion(index : number) : void{
+        if(index < (this.questionData.length-1)){
+            this.questionData[index].isShow = false
+            this.questionData[index+1].isShow = true
+        }
+    }
+    selectQuestion(questionIndex:number, responseIndex:number){
+        let response : string = this.questionData[questionIndex].responseSet[responseIndex];
+        this.selectAnswers[questionIndex] = response
     }
 
-    anyNextIndex(event : number){
-        this.nextQuestion(event)
-    }
-
-
-    shortHandDirective(){
-        this.message = "Dynamic Message By Shorthand Way."
-    }
-
-    beforeMount(){
-        //console.log("beforeMount")
-    }
-
-    mounted(){
-        //console.log("mouonted")
-    }
-
-    created(){
-        //console.log("created")
-    }
-
-    updated(){
-        //console.log("updatee")
-    }
-
-    beforeUpdate(){
-        // console.log("beforeUpdate")
-    }
-
-    beforeDestroy(){
-        //console.log("beforeDestroy")
-    }
-
-    destroyed(){
-        //console.log("destroyed")
-    }
+    // beforeMount(){
+    //     console.log("beforeMount")
+    // }
+    // mounted(){
+    //     console.log("mounted")
+    // }
+    // created(){
+    //     console.log("created")
+    // }
+    // updated(){
+    //     console.log("updatee")
+    // }
+    // beforeUpdate(){
+    //     console.log("beforeUpdate")
+    // }
+    // beforeDestroy(){
+    //     console.log("beforeDestroy")
+    // }
+    // destroyed(){
+    //     console.log("destroyed")
+    // }
 }
