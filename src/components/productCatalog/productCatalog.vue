@@ -9,26 +9,26 @@
         </div>
         <div class="main-block">
             <form>
-                <h1>Product Catalog New User</h1>
+                <h1>Add Product</h1>
                 <div class="info">
                     <div class='containerDiv'>
                         <label for='pid'>Product ID</label>
-                        <input type='number' placeholder='enter product Id...'>
+                        <input type='number' id='serialNo' placeholder='enter product Id...' required>
                     </div>
                     <div class='containerDiv'>
                         <label for='pname'>Product Name</label>
-                        <input type='text' placeholder='enter product name...'>
+                        <input type='text' id='name' placeholder='enter product name...' required>
                     </div>
                     <div class='containerDiv'>
                         <label for='pprice'>Product Price</label>
-                        <input type='number' placeholder='enter product price...'>
+                        <input type='number' id='price' placeholder='enter product price...' required>
                     </div>  
                     <div class='containerDiv'>
                         <label for='pdescription'>Product Description</label>
-                        <textarea placeholder='enter product description...'></textarea>
+                        <textarea id='description' placeholder='enter product description...' required></textarea>
                     </div>
                     <div class='containerDiv'>  
-                    <button type="submit" >Add Product</button>
+                    <button type="submit" @click='submitProduct($event)'>SUBMIT</button>
                     </div>
                 </div>    
             </form>
