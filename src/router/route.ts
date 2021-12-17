@@ -1,6 +1,7 @@
 import Home from '../views/Home.vue';
 import MCQComponent from '../components/mcqcomponent/mcqComponent.vue';
 import ProductCatalog from '@/components/productCatalog/productCatalog.vue';
+import ViewProduct from '../components/productCatalog/viewProduct/viewProduct.vue'
 
 const routes = [
     {
@@ -46,6 +47,12 @@ const routes = [
       name: 'Product Catalog',
       component: ProductCatalog
     },
+    {
+      path: '/viewProducts',
+      name: 'View Products',
+      component: ViewProduct
+
+    }
   ]
 
   export default routes;

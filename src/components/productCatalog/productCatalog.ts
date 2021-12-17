@@ -47,4 +47,8 @@ export class ProductCatalog extends Vue{
         }
     }
 
+    goToView(){
+        this.$router.push('/viewProducts')
+    }
+
 }

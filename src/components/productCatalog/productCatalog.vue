@@ -4,7 +4,7 @@
             <h1>PRODUCT CATALOGUE</h1>
             <div>
                 <button class='addButton' type='button'>ADD PRODUCT</button>
-                <button class='viewButton' type='button' > VIEW PRODUCTS </button>
+                <button class='viewButton' type='button' @click="goToView()">View Products</button>
             </div> 
         </div>
         <div class="main-block">
