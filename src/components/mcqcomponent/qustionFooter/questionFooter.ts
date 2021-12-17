@@ -1,22 +1,24 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import {QuestionSet} from '../../../Model/model'
-
+import { QuestionSet } from '../../../Model/model'
 
 @Component
-export class QuestionFooter extends Vue {
 
-@Prop()
-data !:Array<QuestionSet>
+export class QuestionFooter extends Vue{
 
-@Prop()
-index !:number
+    @Prop()
+    questionData !: QuestionSet[]
 
-previousIndex(index : number) : void{
-    this.$emit('anyPreviousIndex', index )
-}
+    @Prop()
+    index !: number
 
-nextIndex(index : number) : void{
-    this.$emit('anyNextIndex', index )
-}
+    previousQuestion(index:number):void{
+        this.$emit('previousIndex',index)
+    }
+
+    nextQuestion(index:number):void{
+        this.$emit('nextIndex',index)
+
+    }
+
 
 }

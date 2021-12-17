@@ -31,21 +31,9 @@
                             <p>
                                 {{ question.questionTitle }}
                             </p>
-                            <ul>
-                                <li v-for="(res, ind) in question.responseSet" :value="res" :key="index + ind" >
-                                    <label>
-                                        <input type="radio" :value="res" v-model="selectAnswers[index]" @change="selectQuestion(index,ind )"/>
-                                        {{ res }}
-                                    </label>
-                                </li>
-                            </ul>
-                            <div class="question-footer">
-                                <div class="footer-left">Question {{index+1}} of {{questionData.length}}</div>
-                                <div class="footer-right">
-                                    <button class="transparent-button" :class="index === 0 ? 'disableClass' : ''" @click="previousQuestion(index)"> Previous </button>
-                                    <button class="primary-button" :class="index === (questionData.length-1) ? 'disableClass' : ''" @click="nextQuestion(index)"> Next</button>
-                                </div>
-                            </div>
+
+                           <QuestionResponse :questionResponseSet='question' :index='index' :selectAnswers='selectAnswers' @currentSelection='selectQuestion'></QuestionResponse>
+                           <QuestionFooter :questionData='questionData' :index ='index' @previousIndex='previousIndex' @nextIndex='nextIndex'></QuestionFooter>                             
                         </div>
                     </div>
                 </div>

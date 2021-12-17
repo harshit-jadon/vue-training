@@ -1,22 +1,21 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import {QuestionSet} from '../../../Model/model'
-
-
+import { QuestionSet } from '../../../Model/model'
 @Component
-export class QuestionResponse extends Vue {
 
-@Prop()
-questionRespnse !:QuestionSet
+export class QuestionResponse extends Vue{
 
-@Prop()
-index !:number
+    @Prop()
+    questionResponseSet !: QuestionSet
 
-@Prop()
-selectAnswers !:string[]
+    @Prop()
+    index !: QuestionSet
+    
+    @Prop()
+    selectAnswers !: QuestionSet
 
+    selectQuestion(questionIndex:number, responseIndex:number){
+        this.$emit('currentSelection',{questionIndex,responseIndex})
 
-selectQuestion(questionIndex:number, responseIndex:number){
-    this.$emit('currentSelection',{questionIndex,responseIndex})
-}
+    }
 
 }

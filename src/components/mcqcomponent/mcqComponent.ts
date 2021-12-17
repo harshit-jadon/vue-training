@@ -1,7 +1,19 @@
 import { Vue, Component, Watch } from 'vue-property-decorator'
 import { MCQData } from './mcqData'
 import { QuestionSet } from '../../Model/model'
-@Component
+import QuestionResponse  from './questionResponse/questionResponse.vue';
+import QuestionFooter from './qustionFooter/questionFooter.vue';
+
+interface selectedResponse {
+    questionIndex:number, 
+    responseIndex : number
+}
+@Component({
+    components :{
+    'QuestionResponse' : QuestionResponse,
+    'QuestionFooter' : QuestionFooter
+    }
+})
 
 export class MCQComponent extends Vue{
 
@@ -32,9 +44,17 @@ export class MCQComponent extends Vue{
             this.questionData[index+1].isShow = true
         }
     }
-    selectQuestion(questionIndex:number, responseIndex:number){
-        let response : string = this.questionData[questionIndex].responseSet[responseIndex];
-        this.selectAnswers[questionIndex] = response
+    selectQuestion(event :selectedResponse){
+        let response : string = this.questionData[event.questionIndex].responseSet[event.responseIndex];
+        this.selectAnswers[event.questionIndex] = response
+        // console.log(this.selectAnswers)
+        // console.log(response)
+    }
+    previousIndex(event:number){
+        this.previousQuestion(event)
+    }
+    nextIndex(event:number){
+        this.nextQuestion(event)
     }
 
     // beforeMount(){
