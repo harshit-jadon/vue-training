@@ -8,7 +8,8 @@
       <router-link to="/home">Home</router-link> |
       <router-link to="/about">About</router-link> |
       <!-- <button @click="changeRoute('mcq')">MCQ</button> -->
-      <router-link to="/mcq">MCQ</router-link>
+      <router-link to="/mcq">MCQ</router-link> |
+      <router-link to='/productCatalog'> Product Catalog </router-link>
     </div>
     <router-view/>
   </div>

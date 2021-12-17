@@ -1,5 +1,6 @@
 import Home from '../views/Home.vue';
 import MCQComponent from '../components/mcqcomponent/mcqComponent.vue';
+import ProductCatalog from '@/components/productCatalog/productCatalog.vue';
 
 const routes = [
     {
@@ -37,9 +38,14 @@ const routes = [
           // component : About2Component,
           component: () =>
           import(/* webpackChunkName: "about" */ "../views/About2Component.vue"),
-        }
+        },
       ]
-    }
+    },
+    {
+      path: '/productCatalog',
+      name: 'Product Catalog',
+      component: ProductCatalog
+    },
   ]
 
   export default routes;
