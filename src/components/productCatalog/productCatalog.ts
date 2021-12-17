@@ -1,4 +1,7 @@
 import { Vue, Component } from 'vue-property-decorator'
+import Header from '../productCatalog/header/header.vue'
+import AddProduct from '../productCatalog/addProduct/addProduct.vue'
+
 
 type Product ={
     serialNo:number,
@@ -6,7 +9,12 @@ type Product ={
     price:number,
     description:string,
 }
-@Component
+@Component({
+    components :{
+        'Header' : Header,
+        'AddProduct' : AddProduct
+    }
+})
 
 export class ProductCatalog extends Vue{
     public product:Product = {
@@ -31,24 +39,39 @@ export class ProductCatalog extends Vue{
         this.product.name = name.value,
         this.product.price = price.value,
         this.product.description = description.value,
-        console.log(this.product)
         
         this.productList.push({...this.product})
-        console.log(this.productList)
 
         localStorage.setItem('productList',JSON.stringify(this.productList));
-        console.log(this.productList) 
-        console.log(this.productArray)
-    }
-
-    mounted(){
-        if(localStorage.getItem('productList')!=null){
-            this.productList=JSON.parse(JSON.stringify(localStorage.getItem('productList')))
+        this.product = {
+            serialNo:0,
+            name:'',
+            price:0,
+            description:''
         }
+        // this.goToView()
     }
 
+    // mounted(){
+    //     if(localStorage.getItem('productList')!=null){
+    //         this.productList=JSON.parse(JSON.stringify(localStorage.getItem('productList')))
+    //     }
+    // }
+    goToAdd(){
+        this.$router.push('/addProduct')
+    }
     goToView(){
         this.$router.push('/viewProducts')
+    }
+    goToAddproducts(){
+        this.goToAdd()
+    }
+    goToViews(){
+        this.goToView()
+    }
+    submitProducts(event:any){
+        this.submitProduct(event)
+        
     }
 
 }

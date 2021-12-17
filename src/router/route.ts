@@ -2,6 +2,7 @@ import Home from '../views/Home.vue';
 import MCQComponent from '../components/mcqcomponent/mcqComponent.vue';
 import ProductCatalog from '@/components/productCatalog/productCatalog.vue';
 import ViewProduct from '../components/productCatalog/viewProduct/viewProduct.vue'
+import AddProduct from '../components/productCatalog/addProduct/addProduct.vue'
 
 const routes = [
     {
@@ -46,6 +47,12 @@ const routes = [
       path: '/productCatalog',
       name: 'Product Catalog',
       component: ProductCatalog
+    },
+    {
+      path: '/addProduct',
+      name: 'Add Product',
+      component: AddProduct
+
     },
     {
       path: '/viewProducts',
